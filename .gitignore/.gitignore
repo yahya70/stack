@@ -1,0 +1,38 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class stacks : MonoBehaviour {
+
+    int stack_uzunlugu;
+    int count = 8;
+    GameObject[] go.stack;
+    int stack_index
+    // Use this for initialization
+    void Start() {
+        stack_uzunlugu = transform.GetChildCount();
+        go_stack = new GameObject[stack_uzunlugu];
+        for (int i = 0; i < stack_uzunlugu; i++)
+        {
+            go_stack[i] = transform.GetChild(i).gameObject;
+	}
+        stack_index = stack_uzunlugu - 1;
+    }
+    // Update is called once per frame
+    void Update () {
+		if(Input.GetMouseButtonDown(0))
+        {
+            Stack_Al_Koy();
+            count++;
+        }
+    }
+    void Stack_Al_Koy()
+    {
+    if(stack_index < 0)
+        {
+            stack_index = stack_uzunlugu - 1;
+        }
+        go_stack[stack_index].transform.localPosition = new Vector3(0, count, 0);
+        stack_index--;
+    }
+}
